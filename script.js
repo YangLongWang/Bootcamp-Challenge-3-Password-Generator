@@ -12,14 +12,16 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  debugger
+  //debugger
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
-  window.alert("Welcome to use the password generator! Please choose the criteria from the following:");
+}
 
+function generatePassword() {
+  window.alert("Welcome to use the password generator! Please choose the criteria from the following:");
   length();
 }
 
@@ -63,37 +65,20 @@ var characterType = function() {
     window.alert("You have to choose at least ONE type");
     characterType();
   } else {
-    generatePassword();
+    combinePassword();
   }
 }
 
-
-
-
-
-
-
-// generatePassword() show password in textarea
-var generatePassword = function() {
-  
-  document.querySelector()
-
-
-
-  passLength
-  //
-  lowerEl
-  upperEl
-  numberEl
-  specialEl
-
-
+var combinePassword = function() {
+  var combineText = window.alert('Password: ' + length + lowerEl);
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+// passLength
 
-
-
+// lowerEl
+// upperEl
+// numberEl
+// specialEl
