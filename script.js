@@ -185,3 +185,9 @@ generateBtn.addEventListener("click", writePassword);
 // numberEl
 // specialEl
 // " ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+
+for (var i=33; i<=127; i++) {
+  if (i<=47 || i>=58 && i<=64 || i>=91 && i<=96 || i>=123) {
+    specialCharacters.push(String.fromCharCode(i));
+  }
+}
