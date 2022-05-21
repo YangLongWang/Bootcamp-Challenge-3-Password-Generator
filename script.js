@@ -1,23 +1,61 @@
 // Assignment code here
-
-// var specialCharacters = ;
-// var lowerCase = ;
-// var upperCase = ;
-// var number = ;
-
+// var specialCharacters = /[ ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/;
+var specialCharacters = [",","!","#","$","%","&","(",")","*","+",".","/",":",";","<","=",">","?","@"];
+var lowerCase = [];
+var upperCase = [];
+// var number = [0,1,2,3,4,5,6,7,8,9];
+var number = ["0","1","2","3","4","5","6","7","8","9"];
+for (var i=97; i<123; i++) {
+  lowerCase.push(String.fromCharCode(i));
+}
+for (var z=65; z<91; z++) {
+  upperCase.push(String.fromCharCode(z));
+}
+var passLength= "";
+var checktype = "";
 var characterTypeNum = [];
+var passArray = [];
+var finalPass = '';
+
+function getOneNum() {
+  var pickIndex = Math.floor(Math.random()*number.length);
+  var pickOne = number[pickIndex];
+  console.log(pickOne);
+  return pickOne;
+}
+
+function getOneLower() {
+  var pickIndex = Math.floor(Math.random()*lowerCase.length);
+  var pickOne = lowerCase[pickIndex];
+  console.log(pickOne);
+  return pickOne;
+}
+
+function getOneUpper() {
+  var pickIndex = Math.floor(Math.random()*upperCase.length);
+  var pickOne = upperCase[pickIndex];
+  console.log(pickOne);
+  return pickOne;  
+}
+
+function getOneSpecial() {
+  var pickIndex = Math.floor(Math.random()*specialCharacters.length);
+  var pickOne = specialCharacters[pickIndex];
+  console.log(pickOne);
+  return pickOne;  
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  //debugger
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
-
+  passwordText.value = finalPass;
+  //passwordText.value   password
 }
 
 function generatePassword() {
@@ -25,12 +63,12 @@ function generatePassword() {
   length();
 }
 
-// password length
 var length = function() {
-  var passLength = window.prompt("Please choose the password's length at least 8 to 128 charicters.");
+  passLength = window.prompt("Please choose the password's length at least 8 to 128 charicters.");
   if (passLength >= 8 && passLength <=128) {
     window.alert("Next, the following are the components of a password character type.");
-    // console.log(passLength);
+    
+    console.log(passLength);
     characterType();
   } else { 
     window.alert("The password length should be between 8 and 128. Plase try again.");
@@ -58,27 +96,92 @@ var characterType = function() {
   //     break;
   //   }
   // }
+  checktype = characterTypeNum.some(myFunction => myFunction == true);
+  console.log(checktype);
+  
+  addEls();
+  function addEls() {
+    if (checktype !== true) {
+      window.alert("You have to choose at least ONE type");
+      characterType();
+    } else {
+      for (h=0; h<passLength; h++) {
+        if (lowerEl == true) {
+          passArray.push(getOneLower());
+    
+        }
+        if (upperEl == true) {
+          passArray.push(getOneUpper());
+          
+        }
+        if (numberEl == true) {
+          passArray.push(getOneNum());
+        
+        }
+        if (specialEl == true) {
+          passArray.push(getOneSpecial());
+         
+        }
+      }
+    }
+    for (var i = passArray.length - 1; i > 0; i--) {
+    
+        // Generate random number
+        var j = Math.floor(Math.random() * (i + 1));
+                    
+        var temp = passArray[i];
+        passArray[i] = passArray[j];
+        passArray[j] = temp;
+    }
 
-  var checktype = characterTypeNum.some(myFunction => myFunction == true);
-  // console.log(checktype);
-  if (checktype != true) {
-    window.alert("You have to choose at least ONE type");
-    characterType();
-  } else {
-    combinePassword();
+    passArray.splice(passLength, passArray.length - passLength );
+    console.log(passArray);
   }
+  combinePassword();
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+  
+      // Generate random number
+      var j = Math.floor(Math.random() * (i + 1));
+                  
+      var temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+  }
+      
+  return array;
 }
 
 var combinePassword = function() {
-  var combineText = window.alert('Password: ' + length + lowerEl);
+  // debugger;
+  // passArray = shuffleArray(passArray)
+  for (var i =0; i<passArray.length; i++) {
+      finalPass += passArray[i];
+    }
+    
+  // if (passArray.length <= passLength) {
+  //   finalPass.push(passArray);
+  //   finalPass = finalPass.join("");
+  //   finalPass = finalPass.slice(0,(passLength + 1));
+  // } else {
+  //   finalPass = [];
+  //   finalPass.push(passArray);
+  //   finalPass = finalPass.join("");
+  //   finalPass = finalPass.slice(0,(passLength + 1));
+  // }
+  // console.log(passArray);
+  // console.log(passArray.length);
+  // console.log(finalPass);
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 // passLength
-
 // lowerEl
 // upperEl
 // numberEl
 // specialEl
+// " ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
