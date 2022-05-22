@@ -3,8 +3,7 @@
 var specialCharacters = [",","!","#","$","%","&","(",")","*","+",".","/",":",";","<","=",">","?","@"];
 var lowerCase = [];
 var upperCase = [];
-// var number = [0,1,2,3,4,5,6,7,8,9];
-var number = ["0","1","2","3","4","5","6","7","8","9"];
+var number = [0,1,2,3,4,5,6,7,8,9];
 for (var i=97; i<123; i++) {
   lowerCase.push(String.fromCharCode(i));
 }
@@ -55,7 +54,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = finalPass;
-  //passwordText.value   password
+  //passwordText.value = password;
 }
 
 function generatePassword() {
@@ -101,6 +100,7 @@ var characterType = function() {
   
   addEls();
   function addEls() {
+    passArray = [];
     if (checktype !== true) {
       window.alert("You have to choose at least ONE type");
       characterType();
@@ -108,30 +108,25 @@ var characterType = function() {
       for (h=0; h<passLength; h++) {
         if (lowerEl == true) {
           passArray.push(getOneLower());
-    
         }
         if (upperEl == true) {
           passArray.push(getOneUpper());
-          
         }
         if (numberEl == true) {
           passArray.push(getOneNum());
-        
         }
         if (specialEl == true) {
           passArray.push(getOneSpecial());
-         
         }
       }
     }
     for (var i = passArray.length - 1; i > 0; i--) {
-    
-        // Generate random number
-        var j = Math.floor(Math.random() * (i + 1));
-                    
-        var temp = passArray[i];
-        passArray[i] = passArray[j];
-        passArray[j] = temp;
+      // Generate random number
+      var j = Math.floor(Math.random() * (i + 1));
+                  
+      var temp = passArray[i];
+      passArray[i] = passArray[j];
+      passArray[j] = temp;
     }
 
     passArray.splice(passLength, passArray.length - passLength );
@@ -140,23 +135,22 @@ var characterType = function() {
   combinePassword();
 }
 
-function shuffleArray(array) {
-  for (var i = array.length - 1; i > 0; i--) {
-  
-      // Generate random number
-      var j = Math.floor(Math.random() * (i + 1));
-                  
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-  }
-      
-  return array;
-}
+// function shuffleArray(array) {
+//   for (var i = array.length - 1; i > 0; i--) {
+//     // Generate random number
+//     var j = Math.floor(Math.random() * (i + 1));
+                
+//     var temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   }   
+//   return array;
+// }
 
 var combinePassword = function() {
   // debugger;
   // passArray = shuffleArray(passArray)
+  finalPass = '';
   for (var i =0; i<passArray.length; i++) {
       finalPass += passArray[i];
     }
@@ -185,9 +179,3 @@ generateBtn.addEventListener("click", writePassword);
 // numberEl
 // specialEl
 // " ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
-
-for (var i=33; i<=127; i++) {
-  if (i<=47 || i>=58 && i<=64 || i>=91 && i<=96 || i>=123) {
-    specialCharacters.push(String.fromCharCode(i));
-  }
-}
