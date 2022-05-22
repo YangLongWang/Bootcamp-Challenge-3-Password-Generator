@@ -1,5 +1,4 @@
 // Assignment code here
-// var specialCharacters = /[ ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/;
 var specialCharacters = [",","!","#","$","%","&","(",")","*","+",".","/",":",";","<","=",">","?","@"];
 var lowerCase = [];
 var upperCase = [];
@@ -16,32 +15,11 @@ var characterTypeNum = [];
 var passArray = [];
 var finalPass = '';
 
-function getOneNum() {
-  var pickIndex = Math.floor(Math.random()*number.length);
-  var pickOne = number[pickIndex];
+function getOne(value) {
+  var pickIndex = Math.floor(Math.random()*value.length);
+  var pickOne = value[pickIndex];
   console.log(pickOne);
   return pickOne;
-}
-
-function getOneLower() {
-  var pickIndex = Math.floor(Math.random()*lowerCase.length);
-  var pickOne = lowerCase[pickIndex];
-  console.log(pickOne);
-  return pickOne;
-}
-
-function getOneUpper() {
-  var pickIndex = Math.floor(Math.random()*upperCase.length);
-  var pickOne = upperCase[pickIndex];
-  console.log(pickOne);
-  return pickOne;  
-}
-
-function getOneSpecial() {
-  var pickIndex = Math.floor(Math.random()*specialCharacters.length);
-  var pickOne = specialCharacters[pickIndex];
-  console.log(pickOne);
-  return pickOne;  
 }
 
 // Get references to the #generate element
@@ -88,13 +66,6 @@ var characterType = function() {
 
   console.log(characterTypeNum);
   // check types at least one
-  // var checktype = false;
-  // for (i=0; i<characterTypeNum.length; i++) {
-  //   if (characterTypeNum[i] == true) {
-  //     checktype = true;
-  //     break;
-  //   }
-  // }
   checktype = characterTypeNum.some(myFunction => myFunction == true);
   console.log(checktype);
   
@@ -107,16 +78,16 @@ var characterType = function() {
     } else {
       for (h=0; h<passLength; h++) {
         if (lowerEl == true) {
-          passArray.push(getOneLower());
+          passArray.push(getOne(lowerCase));
         }
         if (upperEl == true) {
-          passArray.push(getOneUpper());
+          passArray.push(getOne(upperCase));
         }
         if (numberEl == true) {
-          passArray.push(getOneNum());
+          passArray.push(getOne(number));
         }
         if (specialEl == true) {
-          passArray.push(getOneSpecial());
+          passArray.push(getOne(specialCharacters));
         }
       }
     }
@@ -148,34 +119,13 @@ var characterType = function() {
 // }
 
 var combinePassword = function() {
-  // debugger;
   // passArray = shuffleArray(passArray)
   finalPass = '';
-  for (var i =0; i<passArray.length; i++) {
-      finalPass += passArray[i];
-    }
-    
-  // if (passArray.length <= passLength) {
-  //   finalPass.push(passArray);
-  //   finalPass = finalPass.join("");
-  //   finalPass = finalPass.slice(0,(passLength + 1));
-  // } else {
-  //   finalPass = [];
-  //   finalPass.push(passArray);
-  //   finalPass = finalPass.join("");
-  //   finalPass = finalPass.slice(0,(passLength + 1));
-  // }
-  // console.log(passArray);
-  // console.log(passArray.length);
-  // console.log(finalPass);
+  for (var i=0; i<passArray.length; i++) {
+    finalPass += passArray[i];
+  }
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// passLength
-// lowerEl
-// upperEl
-// numberEl
-// specialEl
-// " ,!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
