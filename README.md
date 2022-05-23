@@ -1,5 +1,92 @@
 # Password Generator Starter Code
+## Table of contents
 
+- [Overview](#overview)
+  - [Purpose](#purpose)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
+
+## Overview
+
+### Purpose
+To create an application that an employee can use to generate a random password based on criteria they’ve selected.
+
+### The challenge
+
+Users should be able to:
+
+- click the button, then follow the required question to get a random password every time on the page.
+
+
+### Screenshot
+
+![](./asset/images/Password%20Generator%20-%201.png)
+![](./asset/images/Password%20Generator%20-%202.png)
+
+### Links
+
+- Solution URL: [https://github.com/YangLongWang/Bootcamp-Challege-2-Professional-Portfolio](https://github.com/YangLongWang/Bootcamp-Challege-2-Professional-Portfolio)
+- Live Site URL: [https://yanglongwang.github.io/Bootcamp-Challege-2-Professional-Portfolio/](https://yanglongwang.github.io/Bootcamp-Challege-2-Professional-Portfolio/)
+
+## My process
+
+### Build with
+
+- Semantic HTML
+- CSS
+
+### What I learned
+
+- using media queries to change the properties and the website's width to reach users can check the website on various screens and devices.
+- Make the heading part stick to the top of the page.
+- Practice using flex boxes.
+
+To see how I add code snippets, see below:
+
+```css
+@media screen and (max-width: 980px) {
+    header {
+        padding: 25px;
+    }
+
+    p {
+        text-align: center;
+    }
+
+    .text p {
+        text-align: left;
+    }
+
+    .applications {
+        padding: 0 40px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}
+
+header {
+    padding: 30px;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+```
+
+## Author
+
+- Github - [Longyang Wang](https://github.com/YangLongWang)
 
 
 
