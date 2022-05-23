@@ -73,7 +73,7 @@ var characterType = function() {
     characterType();
   } else {
     for (h=0; h<passLength; h++) {
-      if (passArray.length != passLength) {
+      if (passArray.length < passLength) {
         if (lowerEl == true) {
           passArray.push(getOne(lowerCase));
         }

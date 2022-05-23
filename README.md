@@ -37,51 +37,44 @@ Users should be able to:
 
 ### Build with
 
-- Semantic HTML
+- HTML
 - CSS
+- JAVASCRIPT
 
 ### What I learned
 
-- using media queries to change the properties and the website's width to reach users can check the website on various screens and devices.
-- Make the heading part stick to the top of the page.
-- Practice using flex boxes.
+- using String.formCharCode() converts Unicode values to characters.
+- simplify funtion getOne by passing parameters.
+- using array.push() add item into array.
+- using array.some() check if the elements in array pass a function.
+- using shrffle to randomize a array.
+
 
 To see how I add code snippets, see below:
 
-```css
-@media screen and (max-width: 980px) {
-    header {
-        padding: 25px;
-    }
-
-    p {
-        text-align: center;
-    }
-
-    .text p {
-        text-align: left;
-    }
-
-    .applications {
-        padding: 0 40px;
-    }
-
-    footer {
-        padding: 10px;
-    }
+```JavaScript
+for (var i=97; i<123; i++) {
+  lowerCase.push(String.fromCharCode(i));
 }
 
-header {
-    padding: 30px;
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+function getOne(value) {
+  var pickIndex = Math.floor(Math.random()*value.length);
+  var pickOne = value[pickIndex];
+  return pickOne;
 }
+
+passArray.push(getOne(lowerCase));
+
+var checktype = characterTypeNum.some(myFunction => myFunction == true);
+
+for (var i = passArray.length - 1; i > 0; i--) {
+  var j = Math.floor(Math.random() * (i + 1));
+  var temp = passArray[i];
+  passArray[i] = passArray[j];
+  passArray[j] = temp;
+}  
+
+passArray.splice(passLength, passArray.length - passLength );
 ```
 
 ## Author
@@ -90,72 +83,9 @@ header {
 
 
 
-
-
-
-
-
-
-
-
 what I learn
 ```
-for (var i=97; i<123; i++) {
-  lowerCase.push(String.fromCharCode(i));
-}
 
-for (var z=65; z<91; z++) {
-  upperCase.push(String.fromCharCode(z));
-}
-
-function getOneNum() {
-  var pickIndex = Math.floor(Math.random()*number.length);
-  var pickOne = number[pickIndex];
-  console.log(pickOne);
-  return pickOne;
-}
-
-function getOneLower() {
-  var pickIndex = Math.floor(Math.random()*lowerCase.length);
-  var pickOne = lowerCase[pickIndex];
-  console.log(pickOne);
-  return pickOne;
-}
-
-function getOneUpper() {
-  var pickIndex = Math.floor(Math.random()*upperCase.length);
-  var pickOne = upperCase[pickIndex];
-  console.log(pickOne);
-  return pickOne;  
-}
-
-function getOneSpecial() {
-  var pickIndex = Math.floor(Math.random()*specialCharacters.length);
-  var pickOne = specialCharacters[pickIndex];
-  console.log(pickOne);
-  return pickOne;  
-}
-
-// check types at least one
-var checktype = false;
-for (i=0; i<characterTypeNum.length; i++) {
-  if (characterTypeNum[i] == true) {
-    checktype = true;
-    break;
-  }
-}
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-    // Generate random number
-    var j = Math.floor(Math.random() * (i + 1));
-                
-    var temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-    }   
-    return array;
-}
 ```
 
 
