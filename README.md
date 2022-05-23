@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/YangLongWang/Bootcamp-Challege-2-Professional-Portfolio](https://github.com/YangLongWang/Bootcamp-Challege-2-Professional-Portfolio)
-- Live Site URL: [https://yanglongwang.github.io/Bootcamp-Challege-2-Professional-Portfolio/](https://yanglongwang.github.io/Bootcamp-Challege-2-Professional-Portfolio/)
+- Solution URL: [https://github.com/YangLongWang/Bootcamp-Challenge-3-Password-Generator](https://github.com/YangLongWang/Bootcamp-Challenge-3-Password-Generator)
+- Live Site URL: [https://yanglongwang.github.io/Bootcamp-Challenge-3-Password-Generator/](https://yanglongwang.github.io/Bootcamp-Challenge-3-Password-Generator/)
 
 ## My process
 
@@ -73,32 +73,8 @@ for (var i = passArray.length - 1; i > 0; i--) {
   passArray[i] = passArray[j];
   passArray[j] = temp;
 }  
-
-passArray.splice(passLength, passArray.length - passLength );
 ```
 
 ## Author
 
 - Github - [Longyang Wang](https://github.com/YangLongWang)
-
-
-
-what I learn
-```
-
-```
-
-
-
-
-next update
-```
-  // for (var i = passArray.length - 1; i > 0; i--) {
-  //   // Generate random number
-  //   var j = Math.floor(Math.random() * (i + 1));
-                
-  //   var temp = passArray[i];
-  //   passArray[i] = passArray[j];
-  //   passArray[j] = temp;
-  // }
-  ```
