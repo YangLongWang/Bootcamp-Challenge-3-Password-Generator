@@ -10,15 +10,12 @@ for (var z=65; z<91; z++) {
   upperCase.push(String.fromCharCode(z));
 }
 var passLength= "";
-var checktype = "";
-var characterTypeNum = [];
 var passArray = [];
-var finalPass = '';
+var finalPass = "";
 
 function getOne(value) {
   var pickIndex = Math.floor(Math.random()*value.length);
   var pickOne = value[pickIndex];
-  console.log(pickOne);
   return pickOne;
 }
 
@@ -37,6 +34,7 @@ function writePassword() {
 
 function generatePassword() {
   window.alert("Welcome to use the password generator! Please choose the criteria from the following:");
+
   length();
 }
 
@@ -44,16 +42,18 @@ var length = function() {
   passLength = window.prompt("Please choose the password's length at least 8 to 128 charicters.");
   if (passLength >= 8 && passLength <=128) {
     window.alert("Next, the following are the components of a password character type.");
-    
-    console.log(passLength);
+
     characterType();
-  } else { 
+  } else {
     window.alert("The password length should be between 8 and 128. Plase try again.");
+
     length();
   }
 }
 
 var characterType = function() {
+  // ask character types
+  var characterTypeNum = [];
   var lowerEl = window.confirm("Does your password require lowercase letters?");
   var upperEl = window.confirm("Does your password require uppercase letters?");
   var numberEl = window.confirm("Does your password require numbers?");
@@ -64,19 +64,16 @@ var characterType = function() {
   characterTypeNum[2] = numberEl;     
   characterTypeNum[3] = specialEl;
 
-  console.log(characterTypeNum);
   // check types at least one
-  checktype = characterTypeNum.some(myFunction => myFunction == true);
-  console.log(checktype);
-  
-  addEls();
-  function addEls() {
-    passArray = [];
-    if (checktype !== true) {
-      window.alert("You have to choose at least ONE type");
-      characterType();
-    } else {
-      for (h=0; h<passLength; h++) {
+  var checktype = characterTypeNum.some(myFunction => myFunction == true);
+  passArray = [];
+  if (checktype !== true) {
+    window.alert("You have to choose at least ONE type");
+
+    characterType();
+  } else {
+    for (h=0; h<passLength; h++) {
+      if (passArray.length != passLength) {
         if (lowerEl == true) {
           passArray.push(getOne(lowerCase));
         }
@@ -89,37 +86,26 @@ var characterType = function() {
         if (specialEl == true) {
           passArray.push(getOne(specialCharacters));
         }
+      } else {
+        break;
       }
     }
-    for (var i = passArray.length - 1; i > 0; i--) {
-      // Generate random number
-      var j = Math.floor(Math.random() * (i + 1));
-                  
-      var temp = passArray[i];
-      passArray[i] = passArray[j];
-      passArray[j] = temp;
-    }
-
-    passArray.splice(passLength, passArray.length - passLength );
-    console.log(passArray);
   }
+
+  for (var i = passArray.length - 1; i > 0; i--) {
+    // Generate random number
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = passArray[i];
+    passArray[i] = passArray[j];
+    passArray[j] = temp;
+  }  
+
+  passArray.splice(passLength, passArray.length - passLength );
+
   combinePassword();
 }
 
-// function shuffleArray(array) {
-//   for (var i = array.length - 1; i > 0; i--) {
-//     // Generate random number
-//     var j = Math.floor(Math.random() * (i + 1));
-                
-//     var temp = array[i];
-//     array[i] = array[j];
-//     array[j] = temp;
-//   }   
-//   return array;
-// }
-
 var combinePassword = function() {
-  // passArray = shuffleArray(passArray)
   finalPass = '';
   for (var i=0; i<passArray.length; i++) {
     finalPass += passArray[i];

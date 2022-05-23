@@ -11,7 +11,7 @@
 
 
 
-
+what I learn
 ```
 for (var i=97; i<123; i++) {
   lowerCase.push(String.fromCharCode(i));
@@ -57,4 +57,31 @@ for (i=0; i<characterTypeNum.length; i++) {
     break;
   }
 }
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+    // Generate random number
+    var j = Math.floor(Math.random() * (i + 1));
+                
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+    }   
+    return array;
+}
 ```
+
+
+
+
+next update
+```
+  // for (var i = passArray.length - 1; i > 0; i--) {
+  //   // Generate random number
+  //   var j = Math.floor(Math.random() * (i + 1));
+                
+  //   var temp = passArray[i];
+  //   passArray[i] = passArray[j];
+  //   passArray[j] = temp;
+  // }
+  ```
